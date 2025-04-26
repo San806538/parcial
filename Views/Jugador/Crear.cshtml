@@ -1,0 +1,40 @@
+@model FutbolPeruano.Models.Jugador
+
+<h2 class="text-center mb-4">Registrar Jugador</h2>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <form asp-action="Crear" method="post" class="card p-4 shadow-sm">
+            <div class="form-group mb-3">
+                <label asp-for="Nombre" class="form-label">Nombre:</label>
+                <input asp-for="Nombre" class="form-control" required />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Edad" class="form-label">Edad:</label>
+                <input asp-for="Edad" type="number" min="1" class="form-control" required />
+                <span asp-validation-for="Edad" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-4">
+                <label asp-for="Posicion" class="form-label">Posición:</label>
+                <input asp-for="Posicion" class="form-control" required />
+                <span asp-validation-for="Posicion" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Registrar Jugador</button>
+        </form>
+
+        @if (ViewBag.Message != null)
+        {
+            <div class="alert alert-success text-center mt-3">
+                @ViewBag.Message
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
