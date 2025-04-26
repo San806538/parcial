@@ -1,9 +1,0 @@
-services:
-  - type: web
-    name: futbol-peruano
-    env: dotnet
-    buildCommand: dotnet build
-    startCommand: dotnet FutbolPeruano.dll
-    repo: https://github.com/San806538/parcial
-    branch: deploy/render
-    autoDeploy: true
