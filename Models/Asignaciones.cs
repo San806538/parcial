@@ -5,10 +5,10 @@ namespace FutbolPeruano.Models{
     {
         public int Id { get; set; }
         
-        public int jugadorId { get; set; }
-        public Jugador Jugador { get; set; }
+        public int JugadorId { get; set; }
+        public Jugador? Jugador { get; set; }
         
-        public int equipoId { get; set; }
-        public Equipos Equipos { get; set; }
+        public int EquipoId { get; set; }
+        public Equipos? Equipo { get; set; }
     }
 }

@@ -1,0 +1,35 @@
+@model FutbolPeruano.Models.Asignaciones
+
+@{
+    ViewData["Title"] = "Asignar Jugador a Equipo";
+}
+
+<h2 class="text-center mb-4">Asignar Jugador a Equipo</h2>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        @if (!ViewData.ModelState.IsValid && ViewData.ModelState[""]?.Errors.Count > 0)
+        {
+            <div class="alert alert-danger">
+                @foreach (var error in ViewData.ModelState[""].Errors)
+                {
+                    <p>@error.ErrorMessage</p>
+                }
+            </div>
+        }
+
+        <form asp-action="Crear" method="post" class="card p-4 shadow-sm">
+            <div class="form-group mb-3">
+                <label>Jugador:</label>
+                <select asp-for="JugadorId" class="form-control" asp-items="ViewBag.Jugador" required></select>
+            </div>
+
+            <div class="form-group mb-4">
+                <label>Equipo:</label>
+                <select asp-for="EquipoId" class="form-control" asp-items="ViewBag.Equipos" required></select>
+            </div>
+
+            <button type="submit" class="btn btn-success w-100">Asignar</button>
+        </form>
+    </div>
+</div>

@@ -5,6 +5,6 @@ namespace FutbolPeruano.Models{
         public int Id { get; set; }
         public string Nombre { get; set; }
 
-        public ICollection<Asignaciones> Asignaciones { get; set; }
+        public ICollection<Asignaciones> Asignaciones { get; set; } = new List<Asignaciones>();
     }
 }
