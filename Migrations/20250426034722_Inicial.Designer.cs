@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FutbolPeruano.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250426022151_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250426034722_Inicial")]
+    partial class Inicial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,7 +23,7 @@ namespace FutbolPeruano.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Asignaciones", b =>
+            modelBuilder.Entity("FutbolPeruano.Models.Asignaciones", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -31,26 +31,25 @@ namespace FutbolPeruano.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("EquiposId")
-                        .HasColumnType("integer");
+                    b.Property<int>("EquipoId")
+                        .HasColumnType("integer")
+                        .HasColumnName("equipoId");
 
-                    b.Property<int>("equipoId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("jugadorId")
-                        .HasColumnType("integer");
+                    b.Property<int>("JugadorId")
+                        .HasColumnType("integer")
+                        .HasColumnName("jugadorId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EquiposId");
+                    b.HasIndex("EquipoId");
 
-                    b.HasIndex("jugadorId", "equipoId")
+                    b.HasIndex("JugadorId", "EquipoId")
                         .IsUnique();
 
                     b.ToTable("Asignaciones");
                 });
 
-            modelBuilder.Entity("Equipos", b =>
+            modelBuilder.Entity("FutbolPeruano.Models.Equipos", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -67,7 +66,7 @@ namespace FutbolPeruano.Migrations
                     b.ToTable("Equipos");
                 });
 
-            modelBuilder.Entity("Jugador", b =>
+            modelBuilder.Entity("FutbolPeruano.Models.Jugador", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -91,31 +90,31 @@ namespace FutbolPeruano.Migrations
                     b.ToTable("Jugador");
                 });
 
-            modelBuilder.Entity("Asignaciones", b =>
+            modelBuilder.Entity("FutbolPeruano.Models.Asignaciones", b =>
                 {
-                    b.HasOne("Equipos", "Equipos")
+                    b.HasOne("FutbolPeruano.Models.Equipos", "Equipo")
                         .WithMany("Asignaciones")
-                        .HasForeignKey("EquiposId")
+                        .HasForeignKey("EquipoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Jugador", "Jugador")
+                    b.HasOne("FutbolPeruano.Models.Jugador", "Jugador")
                         .WithMany("Asignaciones")
-                        .HasForeignKey("jugadorId")
+                        .HasForeignKey("JugadorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Equipos");
+                    b.Navigation("Equipo");
 
                     b.Navigation("Jugador");
                 });
 
-            modelBuilder.Entity("Equipos", b =>
+            modelBuilder.Entity("FutbolPeruano.Models.Equipos", b =>
                 {
                     b.Navigation("Asignaciones");
                 });
 
-            modelBuilder.Entity("Jugador", b =>
+            modelBuilder.Entity("FutbolPeruano.Models.Jugador", b =>
                 {
                     b.Navigation("Asignaciones");
                 });

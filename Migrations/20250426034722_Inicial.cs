@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FutbolPeruano.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class Inicial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -46,15 +46,14 @@ namespace FutbolPeruano.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     jugadorId = table.Column<int>(type: "integer", nullable: false),
-                    equipoId = table.Column<int>(type: "integer", nullable: false),
-                    EquiposId = table.Column<int>(type: "integer", nullable: false)
+                    equipoId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Asignaciones", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Asignaciones_Equipos_EquiposId",
-                        column: x => x.EquiposId,
+                        name: "FK_Asignaciones_Equipos_equipoId",
+                        column: x => x.equipoId,
                         principalTable: "Equipos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -67,9 +66,9 @@ namespace FutbolPeruano.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Asignaciones_EquiposId",
+                name: "IX_Asignaciones_equipoId",
                 table: "Asignaciones",
-                column: "EquiposId");
+                column: "equipoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Asignaciones_jugadorId_equipoId",

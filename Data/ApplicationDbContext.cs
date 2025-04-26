@@ -14,8 +14,12 @@ public class ApplicationDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
-        modelBuilder.Entity<Asignaciones>()
-            .HasIndex(a => new { a.jugadorId, a.equipoId })
-            .IsUnique();
+        modelBuilder.Entity<Asignaciones>(entity =>
+        {
+            entity.Property(e => e.JugadorId).HasColumnName("jugadorId");
+            entity.Property(e => e.EquipoId).HasColumnName("equipoId");
+
+            entity.HasIndex(e => new { e.JugadorId, e.EquipoId }).IsUnique();
+        });
     }
 }
