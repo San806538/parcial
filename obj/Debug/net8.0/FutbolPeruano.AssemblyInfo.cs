@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FutbolPeruano")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+15f051e19518c19878859a856bf807428ca2d5b9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7b37d04ff941f55e59f4b497f242a0d32f91217f")]
 [assembly: System.Reflection.AssemblyProductAttribute("FutbolPeruano")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FutbolPeruano")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
